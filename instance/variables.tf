@@ -18,6 +18,10 @@ variable "sg_name" {
 	type=string
 }
 variable "ingress_rules" {
-	description="Security group platzi test"
+	description="Ingress platzi test"
+	type=list
+}
+variable "egress_rules" {
+	description="Egress platzi test"
 	type=list
 }
