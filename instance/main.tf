@@ -37,4 +37,17 @@ resource "aws_instance" "platzi-instance"{
 	instance_type = var.instance_type
 	tags = var.tags
 	security_groups = [aws_security_group.ssh_conection.name]
+  user_data = file("userdata.yaml") #Este archivo hace la magia
+
+  /*
+  provisioner "remote-exec" {
+    connection {
+      type = "ssh"
+      user = "root"
+      private_key = "${file("~/.ssh/packer-key")}"
+      host = self.public_ip
+    }
+    inline = ["echo hello", "docker -run -it -d -p 3003:80 efrancor/hello-platzi:v1"]
+  }
+  */
 }
